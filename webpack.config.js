@@ -1,5 +1,5 @@
 const path = require('path');
-const SizePlugin = require("size-plugin");
+const SizePlugin = require("./vendor/size-plugin");
 const fs = require("fs");
 module.exports = {
   mode:"production",  
@@ -9,11 +9,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins:[
-    new SizePlugin({
-    
-        decorateAfter:function({output}){
-            fs.writeFileSync(`${process.cwd()}/size-plugin-diff.txt`,output)
-        }
-    })
+    new SizePlugin({writeToDisk:true})
   ]
 };
