@@ -8,7 +8,7 @@ import _ from 'lodash';
    const br = document.createElement('br');
 
    button.innerHTML = 'Click me and look at the console!';
-    // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
    element.appendChild(br);
    element.appendChild(button);
 
