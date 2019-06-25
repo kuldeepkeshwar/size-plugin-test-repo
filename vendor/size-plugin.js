@@ -37,15 +37,11 @@ var NAME = 'SizePlugin';
 var BOT = process.env.SIZE_PLUGIN_BOT;
 var DIFF_FILE = 'size-plugin-diff.json';
 var SizePlugin = function SizePlugin(options) {
-    this.options = options || {
-        writeToDisk: false
-    };
+    this.options = options || {};
     this.pattern = this.options.pattern || '**/*.{mjs,js,css,html}';
     this.exclude = this.options.exclude;
-    if (this.options.writeToDisk) {
-        this.options.filename = this.options.filename || 'size-plugin.json';
-        this.filename = path.join(process.cwd(), this.options.filename);
-    }
+    this.options.filename = this.options.filename || 'size-plugin.json';
+    this.filename = path.join(process.cwd(), this.options.filename);
 };
 SizePlugin.prototype.reverseTemplate = function reverseTemplate (filename, template) {
     if (typeof template === 'function') {
@@ -104,9 +100,9 @@ SizePlugin.prototype.readFromDisk = function readFromDisk (filepath) {
         };
         try {
             var oldStatsStr, oldStats;
-            return readFile(filepath).then(function ($await_10) {
+            return readFile(filepath).then(function ($await_8) {
                 try {
-                    oldStatsStr = $await_10.toString();
+                    oldStatsStr = $await_8.toString();
                     oldStats = JSON.parse(oldStatsStr);
                     return $return(oldStats.sort(function (a, b) { return b.timestamp - a.timestamp; }));
                 } catch ($boundEx) {
@@ -120,22 +116,29 @@ SizePlugin.prototype.readFromDisk = function readFromDisk (filepath) {
 };
 SizePlugin.prototype.writeToDisk = function writeToDisk (filename, stats) {
     return new Promise((function ($return, $error) {
-        var data;
-        return this.readFromDisk(filename).then(function ($await_11) {
-            try {
-                data = $await_11;
-                data.unshift(stats);
-                return writeFile(filename, JSON.stringify(data, undefined, 2)).then(function ($await_12) {
-                    try {
-                        return $return();
-                    } catch ($boundEx) {
-                        return $error($boundEx);
-                    }
-                }, $error);
-            } catch ($boundEx) {
-                return $error($boundEx);
-            }
-        }, $error);
+        if (this.mode === 'production' && !this.options.load && stats.files.some(function (file) { return file.diff > 0; })) {
+            var data;
+            return this.readFromDisk(filename).then((function ($await_9) {
+                try {
+                    data = $await_9;
+                    data.unshift(stats);
+                    return writeFile(filename, JSON.stringify(data, undefined, 2)).then((function ($await_10) {
+                        try {
+                            return $If_4.call(this);
+                        } catch ($boundEx) {
+                            return $error($boundEx);
+                        }
+                    }).bind(this), $error);
+                } catch ($boundEx) {
+                    return $error($boundEx);
+                }
+            }).bind(this), $error);
+        }
+        function $If_4() {
+            return $return();
+        }
+            
+        return $If_4.call(this);
     }).bind(this));
 };
 SizePlugin.prototype.save = function save (files) {
@@ -153,9 +156,9 @@ SizePlugin.prototype.save = function save (files) {
         return new Promise(function ($return, $error) {
             var $logicalAnd_2;
             if ($logicalAnd_2 = BOT) {
-                return writeFile(DIFF_FILE, JSON.stringify(stats, undefined, 2)).then((function ($await_13) {
+                return writeFile(DIFF_FILE, JSON.stringify(stats, undefined, 2)).then((function ($await_11) {
                     try {
-                        $logicalAnd_2 = $await_13;
+                        $logicalAnd_2 = $await_11;
                         return $If_5.call(this);
                     } catch ($boundEx) {
                         return $error($boundEx);
@@ -167,14 +170,14 @@ SizePlugin.prototype.save = function save (files) {
             }
                 
             return $If_5.call(this);
-        }).then((function ($await_14) {
+        }).then((function ($await_12) {
             try {
                 return new Promise((function ($return, $error) {
                     var $logicalAnd_3;
                     if ($logicalAnd_3 = this.options.save) {
-                        return this.options.save(stats).then((function ($await_15) {
+                        return this.options.save(stats).then((function ($await_13) {
                             try {
-                                $logicalAnd_3 = $await_15;
+                                $logicalAnd_3 = $await_13;
                                 return $If_6.call(this);
                             } catch ($boundEx) {
                                 return $error($boundEx);
@@ -186,26 +189,9 @@ SizePlugin.prototype.save = function save (files) {
                     }
                         
                     return $If_6.call(this);
-                }).bind(this)).then((function ($await_16) {
+                }).bind(this)).then((function ($await_14) {
                     try {
-                        return new Promise((function ($return, $error) {
-                            var $logicalAnd_4;
-                            if ($logicalAnd_4 = this.options.writeToDisk && !this.options.load && stats.files.some(function (file) { return file.diff > 0; })) {
-                                return this.writeToDisk(this.filename, stats).then((function ($await_17) {
-                                    try {
-                                        $logicalAnd_4 = $await_17;
-                                        return $If_7.call(this);
-                                    } catch ($boundEx) {
-                                        return $error($boundEx);
-                                    }
-                                }).bind(this), $error);
-                            }
-                            function $If_7() {
-                                return $return($logicalAnd_4);
-                            }
-                                
-                            return $If_7.call(this);
-                        }).bind(this)).then(function ($await_18) {
+                        return this.writeToDisk(this.filename, stats).then(function ($await_15) {
                             try {
                                 return $return();
                             } catch ($boundEx) {
@@ -224,48 +210,35 @@ SizePlugin.prototype.save = function save (files) {
 };
 SizePlugin.prototype.load = function load (outputPath) {
     return new Promise((function ($return, $error) {
+        var data;
         if (this.options.load) {
             var files;
-            return this.options.load().then(function ($await_19) {
+            return this.options.load().then(function ($await_16) {
                     var assign;
 
                 try {
-                    ((assign = $await_19, files = assign.files));
+                    ((assign = $await_16, files = assign.files));
                     return $return(toFileMap(files));
                 } catch ($boundEx) {
                     return $error($boundEx);
                 }
             }, $error);
-        } else {
-            if (this.options.writeToDisk) {
-                var data;
-                return this.readFromDisk(this.filename).then((function ($await_20) {
-                        var assign;
+        }
+        return this.readFromDisk(this.filename).then((function ($await_17) {
+                var assign;
 
-                    try {
-                        data = $await_20;
-                        if (data.length) {
-                            var files;
-                            (assign = data, files = assign[0].files);
-                            return $return(toFileMap(files));
-                        }
-                        return $If_9.call(this);
-                    } catch ($boundEx) {
-                        return $error($boundEx);
-                    }
-                }).bind(this), $error);
+            try {
+                data = $await_17;
+                if (data.length) {
+                    var files;
+                    (assign = data, files = assign[0].files);
+                    return $return(toFileMap(files));
+                }
+                return $return(this.getSizes(outputPath));
+            } catch ($boundEx) {
+                return $error($boundEx);
             }
-            function $If_9() {
-                return $If_8.call(this);
-            }
-                
-            return $If_9.call(this);
-        }
-        function $If_8() {
-            return $return(this.getSizes(outputPath));
-        }
-            
-        return $If_8.call(this);
+        }).bind(this), $error);
     }).bind(this));
 };
 SizePlugin.prototype.apply = function apply (compiler) {
@@ -275,6 +248,7 @@ SizePlugin.prototype.apply = function apply (compiler) {
         var outputPath = compiler.options.output.path;
         this.output = compiler.options.output;
         this.sizes = this.load(outputPath);
+        this.mode = compiler.options.mode;
         var afterEmit = function (compilation, callback) {
             this$1.outputSizes(compilation.assets).then(function (output) {
                 if (output) {
@@ -295,17 +269,17 @@ SizePlugin.prototype.apply = function apply (compiler) {
 SizePlugin.prototype.outputSizes = function outputSizes (assets) {
     return new Promise((function ($return, $error) {
         var sizesBefore, isMatched, isExcluded, assetNames, sizes, files, width, output, items;
-        return Promise.resolve(this.sizes).then((function ($await_21) {
+        return Promise.resolve(this.sizes).then((function ($await_18) {
             try {
-                sizesBefore = $await_21;
+                sizesBefore = $await_18;
                 isMatched = minimatch.filter(this.pattern);
                 isExcluded = this.exclude ? minimatch.filter(this.exclude) : function () { return false; };
                 assetNames = Object.keys(assets).filter(function (file) { return isMatched(file) && !isExcluded(file); });
-                return Promise.all(assetNames.map(function (name) { return gzipSize(assets[name].source()); })).then((function ($await_22) {
+                return Promise.all(assetNames.map(function (name) { return gzipSize(assets[name].source()); })).then((function ($await_19) {
                         var this$1 = this;
 
                     try {
-                        sizes = $await_22;
+                        sizes = $await_19;
                         this.sizes = toMap(assetNames.map(function (filename) { return this$1.stripHash(filename); }), sizes);
                         files = Object.keys(sizesBefore).concat( Object.keys(this.sizes)).filter(dedupe);
                         width = Math.max.apply(Math, files.map(function (file) { return file.length; }));
@@ -370,7 +344,7 @@ SizePlugin.prototype.outputSizes = function outputSizes (assets) {
                                 output += '\n' + text$1.replace(/^\n/g, '');
                             }
                         }
-                        return this.save(items).then(function ($await_23) {
+                        return this.save(items).then(function ($await_20) {
                             try {
                                 return $return(output);
                             } catch ($boundEx) {
@@ -393,14 +367,14 @@ SizePlugin.prototype.getSizes = function getSizes (cwd) {
         return glob(this.pattern, {
             cwd: cwd,
             ignore: this.exclude
-        }).then((function ($await_24) {
+        }).then((function ($await_21) {
             try {
-                files = $await_24;
-                return Promise.all(files.map(function (file) { return gzipSize.file(path.join(cwd, file)).catch(function () { return null; }); })).then((function ($await_25) {
+                files = $await_21;
+                return Promise.all(files.map(function (file) { return gzipSize.file(path.join(cwd, file)).catch(function () { return null; }); })).then((function ($await_22) {
                         var this$1 = this;
 
                     try {
-                        sizes = $await_25;
+                        sizes = $await_22;
                         return $return(toMap(files.map(function (filename) { return this$1.stripHash(filename); }), sizes));
                     } catch ($boundEx) {
                         return $error($boundEx);
