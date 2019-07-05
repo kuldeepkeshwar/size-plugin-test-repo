@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "clean":"rm -rf dist",
+    "clean": "rm -rf dist",
     "dev": "npm run clean && webpack --watch",
     "build": "npm run clean && NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/kuldeepkeshwar/size-plugin-test-repo#readme",
   "devDependencies": {
-    "size-plugin": "^1.2.0",
+    "size-plugin": "kuldeepkeshwar/size-plugin#develop",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.4"
   },

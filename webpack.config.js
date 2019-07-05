@@ -1,5 +1,5 @@
 const path = require('path');
-const SizePlugin = require("./vendor/size-plugin");
+const SizePlugin = require("size-plugin");
 const fs = require("fs");
 module.exports = {
   mode:process.env.NODE_ENV||"development",  
