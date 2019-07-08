@@ -163,12 +163,7 @@ abbrev@1:
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
-acorn-dynamic-import@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-4.0.0.tgz#482210140582a36b83c3e342e1cfebcaa9240948"
-  integrity sha512-d3OEjQV4ROpoflsnUA8HozoIR504TFxNivYEUi6uwz0IYhBkTDXGuWlNdMtybRt3nqVx/L6XqMt0FxkXuWKZhw==
-
-acorn@^6.0.5:
+acorn@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.2.0.tgz#67f0da2fc339d6cfb5d6fb244fd449f33cd8bbe3"
   integrity sha512-8oe72N3WPMjA+2zVG71Ia0nXZ8DpQH+QyyHO+p06jT8eg8FGG3FbcUIi8KziHlAfheJQZeoqbvq1mQSQHXKYLw==
@@ -2500,7 +2495,7 @@ signal-exit@^3.0.0:
 
 size-plugin@kuldeepkeshwar/size-plugin#develop:
   version "1.2.0"
-  resolved "https://codeload.github.com/kuldeepkeshwar/size-plugin/tar.gz/1e3264b5d653ab53fa2d96e6fbd243f0834b546f"
+  resolved "https://codeload.github.com/kuldeepkeshwar/size-plugin/tar.gz/8acf1294faa5ea1042f9f65842fd93dfde7dd61d"
   dependencies:
     axios "^0.19.0"
     chalk "^2.4.1"
@@ -2755,9 +2750,9 @@ terser-webpack-plugin@^1.1.0:
     worker-farm "^1.7.0"
 
 terser@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-4.1.0.tgz#fe949a2189345b2f1789f2bafc6c3b056dab16ed"
-  integrity sha512-O2MzVShUr/B+bxTh83ycpDR+Ocesg5qLR8kphWApRbWCkSnfKq1YPmydnVNfsJuJKHvzSgDNqFq4cr1O36oQ2A==
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.1.2.tgz#b2656c8a506f7ce805a3f300a2ff48db022fa391"
+  integrity sha512-jvNoEQSPXJdssFwqPSgWjsOrb+ELoE+ILpHPKXC83tIxOlh2U75F1KuB2luLD/3a6/7K3Vw5pDn+hvu0C4AzSw==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
@@ -2957,16 +2952,15 @@ webpack-sources@^1.3.0:
     source-map "~0.6.1"
 
 webpack@^4.35.0:
-  version "4.35.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.35.2.tgz#5c8b8a66602cbbd6ec65c6e6747914a61c1449b1"
-  integrity sha512-TZAmorNymV4q66gAM/h90cEjG+N3627Q2MnkSgKlX/z3DlNVKUtqy57lz1WmZU2+FUZwzM+qm7cGaO95PyrX5A==
+  version "4.35.3"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.35.3.tgz#66bc35ef215a7b75e8790f84d560013ffecf0ca3"
+  integrity sha512-xggQPwr9ILlXzz61lHzjvgoqGU08v5+Wnut19Uv3GaTtzN4xBTcwnobodrXE142EL1tOiS5WVEButooGzcQzTA==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
     "@webassemblyjs/wasm-edit" "1.8.5"
     "@webassemblyjs/wasm-parser" "1.8.5"
-    acorn "^6.0.5"
-    acorn-dynamic-import "^4.0.0"
+    acorn "^6.2.0"
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
     chrome-trace-event "^1.0.0"
@@ -3027,9 +3021,9 @@ wrappy@1:
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
 xtend@^4.0.0, xtend@~4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
-  integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
+  integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
   version "4.0.0"
