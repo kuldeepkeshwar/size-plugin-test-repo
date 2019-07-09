@@ -1,1 +1,1 @@
-# size-plugin-test-repo ok
+# size-plugin-test-repo
