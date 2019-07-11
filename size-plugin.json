@@ -1,52 +1,18 @@
 [
   {
-    "timestamp": 1562787671669,
+    "timestamp": 1562840426632,
     "files": [
       {
         "filename": "main.js",
-        "previous": 1114,
-        "size": 25894,
-        "diff": 24780
-      },
-      {
-        "filename": "1.main.js",
-        "previous": 207,
-        "size": 209,
-        "diff": 2
-      }
-    ]
-  },
-  {
-    "timestamp": 1562787207122,
-    "files": [
-      {
-        "filename": "main.js",
-        "previous": 25894,
+        "previous": 0,
         "size": 1114,
-        "diff": -24780
+        "diff": 1114
       },
       {
         "filename": "1.main.js",
-        "previous": 209,
+        "previous": 0,
         "size": 207,
-        "diff": -2
-      }
-    ]
-  },
-  {
-    "timestamp": 1562783433042,
-    "files": [
-      {
-        "filename": "main.js",
-        "previous": 0,
-        "size": 25894,
-        "diff": 25894
-      },
-      {
-        "filename": "1.main.js",
-        "previous": 0,
-        "size": 209,
-        "diff": 209
+        "diff": 207
       }
     ]
   }
