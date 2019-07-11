@@ -2511,7 +2511,7 @@ signal-exit@^3.0.0:
 
 size-plugin@kuldeepkeshwar/size-plugin#develop:
   version "1.2.0"
-  resolved "https://codeload.github.com/kuldeepkeshwar/size-plugin/tar.gz/eb375b5ee2e2b8ace196e499ffe3e41b60d506c0"
+  resolved "https://codeload.github.com/kuldeepkeshwar/size-plugin/tar.gz/99b446f842d9623f2df0c32db48c23aee7cfc4a3"
   dependencies:
     axios "^0.19.0"
     chalk "^2.4.1"
