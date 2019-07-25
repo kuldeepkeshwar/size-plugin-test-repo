@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins:[
-    new SizePlugin({filename:'size-plugin-browser.json'),
-    new SizePlugin({filename:'size-plugin-server.json')
+    new SizePlugin({filename:'size-plugin-browser.json'}),
+    new SizePlugin({filename:'size-plugin-server.json'})
   ]
 };
