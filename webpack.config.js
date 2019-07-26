@@ -14,3 +14,4 @@ module.exports = {
     new SizePlugin({filename:'size-plugin-server.json'})
   ]
 };
+
