@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/kuldeepkeshwar/size-plugin-test-repo#readme",
   "devDependencies": {
+    "size-plugin": "^2.0.0",
     "webpack": "^5.0.0-alpha.19",
-    "webpack-cli": "^3.3.4",
-    "size-plugin": "kuldeepkeshwar/size-plugin#develop"
+    "webpack-cli": "^3.3.4"
   },
   "dependencies": {
     "lodash": "^4.17.11"
