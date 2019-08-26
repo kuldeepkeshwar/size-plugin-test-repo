@@ -6,10 +6,10 @@ function component() {
   const br = document.createElement("br");
 
   button.innerHTML = "Click me and look at the console!";
-//   (async () => {
-//     const _ = await import(/* webpackChunkName: "lodash" */ "lodash");
-//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//   })();
+  (async () => {
+    const _ = await import(/* webpackChunkName: "lodash" */ "lodash");
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  })();
   element.appendChild(br);
   element.appendChild(button);
 
