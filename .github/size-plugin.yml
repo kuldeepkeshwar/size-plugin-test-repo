@@ -1,0 +1,5 @@
+size-files:
+- size-plugin.json
+base-branches:
+- github-actions
+- master
