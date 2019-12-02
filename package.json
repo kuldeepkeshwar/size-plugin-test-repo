@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "dev": "npm run clean && webpack --watch",
-    "build": "npm run clean && NODE_ENV=production webpack"
+    "build": "printenv && npm run clean && NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
