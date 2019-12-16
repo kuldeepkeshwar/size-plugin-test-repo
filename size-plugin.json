@@ -1,12 +1,12 @@
 [
   {
-    "timestamp": 1576475120890,
+    "timestamp": 1576475533662,
     "files": [
       {
         "filename": "main.********************.js",
-        "previous": 1031,
-        "size": 1385,
-        "diff": 354
+        "previous": 1385,
+        "size": 1031,
+        "diff": -354
       },
       {
         "filename": "print.********************.js",
@@ -16,9 +16,9 @@
       },
       {
         "filename": "486.********************.js",
-        "previous": 0,
-        "size": 24786,
-        "diff": 24786
+        "previous": 24786,
+        "size": 0,
+        "diff": -24786
       }
     ]
   }
